@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: dna-mutants-v1
+  cloud:
+    config:
+      enabled: true
+      uri: https://config-server-dna.herokuapp.com
