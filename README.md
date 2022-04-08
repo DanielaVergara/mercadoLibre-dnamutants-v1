@@ -20,7 +20,6 @@ Herramientas que debe tener instalados
 # Configuración del ambiente local
 
 * Importar el proyecto y ejecutar el comando "mvn clean install" (Esto con el fin de descargar las dependencias)
-* Mediante el comango "git checkout feature/dna" se cambiará a la rama con el desarrollo
 * Mediante el comando "mvn clean test" se ejecutarán las pruebas unitarias
 * En base al IDE que utilice ingrese a la clase MAIN y dar click en run
 
