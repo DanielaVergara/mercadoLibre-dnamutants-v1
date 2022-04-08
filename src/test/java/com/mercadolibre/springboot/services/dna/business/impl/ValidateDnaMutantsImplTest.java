@@ -30,7 +30,7 @@ public class ValidateDnaMutantsImplTest {
 		
 		int isMutant = validateDnaMutantsImpl.findDnaMutants(stringsDna);
 		
-		Assert.assertEquals(1, isMutant);
+		Assert.assertEquals(2, isMutant);
 	}
 	
 	@Test
@@ -51,6 +51,16 @@ public class ValidateDnaMutantsImplTest {
 		int isMutant = validateDnaMutantsImpl.findDnaMutants(stringsDna);
 		
 		Assert.assertEquals(3, isMutant);
+	}
+	
+	@Test
+	public void validateDnaWithDiagonalRightTest() throws IOException, ApiException {
+		Dna dna = testUtilDna.getDnaRequest(TestConstants.DNA_DIAGONAL_REQUEST);
+		
+		String[] stringsDna = dna.getDna().parallelStream().toArray(String[]::new);
+		int isMutant = validateDnaMutantsImpl.findDnaMutants(stringsDna);
+		
+		Assert.assertEquals(1, isMutant);
 	}
 	
 	

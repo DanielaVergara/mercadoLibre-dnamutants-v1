@@ -17,9 +17,15 @@ public class ValidateDnaMutantsImpl implements ValidateDnaMutants{
 				    for (int j = 0; j < dna[i].length(); j++) {
 				    	isMutant = checkIfExistsRow(dna, i, j, isMutant);
 				    	isMutant = checkIfExistsColumns(dna, i, j, isMutant);
-				    	isMutant = checkIfExistsDiagonal(dna, i, j, isMutant);
+				    	isMutant = checkIfExistsDiagonalLeft(dna, i, j, isMutant);
 				    }
 			}
+			
+			for (int i = 0; i < dna.length; i++) {
+			    for (int j = dna[i].length()-1; j > 0 ; j--) {
+			    	isMutant = checkIfExistsDiagonalRight(dna, i, j, isMutant);
+			    }
+		}
 		return isMutant;
 	}
 		
@@ -48,7 +54,7 @@ public class ValidateDnaMutantsImpl implements ValidateDnaMutants{
 			return isMutant;
 		}
 		
-		private static int checkIfExistsDiagonal(String[] dna, int i, int j, int isMutant) {
+		private static int checkIfExistsDiagonalLeft(String[] dna, int i, int j, int isMutant) {
 		  if(i < dna.length-3 && j < dna[i].length()-3) {
 			if (dna[i].charAt(j) == dna[i+1].charAt(j+1)
 			    && dna[i].charAt(j) == dna[i+2].charAt(j+2)
@@ -59,5 +65,17 @@ public class ValidateDnaMutantsImpl implements ValidateDnaMutants{
 		  }
 			return isMutant;
 		}
+		
+		private static int checkIfExistsDiagonalRight(String[] dna, int i, int j, int isMutant) {
+			  if(i < dna.length-3 && j > dna[i].length()-3) {
+				if (dna[i].charAt(j) == dna[i+1].charAt(j-1)
+				    && dna[i].charAt(j) == dna[i+2].charAt(j-2)
+				    && dna[i].charAt(j) ==  dna[i+3].charAt(j-3))
+				    {
+				        isMutant++;
+				    }
+			  }
+				return isMutant;
+			}
 		
 }
