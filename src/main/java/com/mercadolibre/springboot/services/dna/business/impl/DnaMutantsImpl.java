@@ -68,7 +68,7 @@ public class DnaMutantsImpl implements DnaMutants {
 	}
 	
 	private boolean validateNitrogenousBase(String[] dna) throws ApiException {
-		Pattern pattern = Pattern.compile("[acgt]+", Pattern.CASE_INSENSITIVE);
+		Pattern pattern = Pattern.compile("[atcg]+", Pattern.CASE_INSENSITIVE);
 		 for (String dnaSequence : dna) {
 				if(!pattern.matcher(dnaSequence).matches()) {
 					throw new ApiException(400,"La base de nitrogenada del ADN tiene un formato incorrecto.");

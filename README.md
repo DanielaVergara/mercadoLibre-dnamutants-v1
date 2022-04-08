@@ -47,6 +47,25 @@ Herramientas que debe tener instalados
 * https://dna.herokuapp.com/stats/
 * https://dna.herokuapp.com/mutant/
 
+## Ejemplos de consumo
+
+headers: Content-Type application/json
+POST https://dna.herokuapp.com/mutant/
+
+{
+   "dna":[
+      "ATGCGA",
+      "CTGTAC",
+      "TTAAGT",
+      "AGAAGG",
+      "CTCCTA",
+      "TCACTG"
+   ]
+} 
+
+headers: Content-Type application/json
+GET https://dna.herokuapp.com/stats/
+
 # Nota importante 
 
 * Ya que se desplegó en un entorno gratuito, tener en consideración la  politica de Heroku.
