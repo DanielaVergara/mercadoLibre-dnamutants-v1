@@ -59,5 +59,5 @@ public class ValidateDnaMutantsImpl implements ValidateDnaMutants{
 		  }
 			return isMutant;
 		}
-	
+		
 }

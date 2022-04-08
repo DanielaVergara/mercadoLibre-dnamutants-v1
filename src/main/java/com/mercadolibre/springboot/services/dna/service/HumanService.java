@@ -14,8 +14,8 @@ public class HumanService {
 	@Autowired
 	HumanRepository humanRepository;
 
-	public void save(Human human) {
-		humanRepository.save(human);
+	public Human save(Human human) {
+		return humanRepository.save(human);
 	}
 	
     public List<Human> getQuantityHuman() {

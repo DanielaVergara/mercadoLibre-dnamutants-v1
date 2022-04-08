@@ -1,8 +1,10 @@
 package com.mercadolibre.springboot.services.dna.exception;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.NoArgsConstructor;
 
 @SuppressWarnings("serial")
+@NoArgsConstructor
 public class ApiException extends Exception {
 
 	@Schema(title="codeStatus",

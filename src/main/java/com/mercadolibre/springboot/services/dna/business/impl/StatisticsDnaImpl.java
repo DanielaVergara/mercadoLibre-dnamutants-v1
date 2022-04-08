@@ -22,8 +22,10 @@ public class StatisticsDnaImpl implements StatisticsDna {
 
 	public Statistics getStatisticsDna() {
 		List<Human>  humans = humanService.getQuantityHuman();
-		Integer countMutant = humans.stream().filter(p -> p.getKindHuman()==1).collect(Collectors.toList()).size();
-		Integer countHuman =  humans.stream().filter(p -> p.getKindHuman()==2).collect(Collectors.toList()).size();
+		Integer countMutant = humans.stream().filter(m -> m.getKindHuman()==1)
+				.collect(Collectors.toList()).size();
+		Integer countHuman =  humans.stream().filter(h -> h.getKindHuman()==2)
+				.collect(Collectors.toList()).size();
 		Statistics statics = new Statistics(countMutant, countHuman);
 		return statics;
 	}

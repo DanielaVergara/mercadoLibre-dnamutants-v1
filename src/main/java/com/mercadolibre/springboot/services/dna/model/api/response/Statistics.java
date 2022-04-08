@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -15,6 +16,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @JsonIgnoreProperties
+@NoArgsConstructor
 @Schema(description= "Response statistics of the ADN's verifications.")
 public class Statistics {
 	

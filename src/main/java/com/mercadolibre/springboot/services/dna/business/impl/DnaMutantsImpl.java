@@ -12,7 +12,7 @@ import com.mercadolibre.springboot.services.dna.business.DnaMutants;
 import com.mercadolibre.springboot.services.dna.business.ValidateDnaMutants;
 import com.mercadolibre.springboot.services.dna.exception.ApiException;
 import com.mercadolibre.springboot.services.dna.model.api.dao.Human;
-import com.mercadolibre.springboot.services.dna.service.HumanService;
+import com.mercadolibre.springboot.services.dna.repository.HumanRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,8 +22,9 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class DnaMutantsImpl implements DnaMutants {
 	
-	@Autowired 
-	HumanService humanService;
+
+	@Autowired
+	private final HumanRepository humanRepository;
 	
 	private final ValidateDnaMutants validateDnaMutants;
 
@@ -53,7 +54,7 @@ public class DnaMutantsImpl implements DnaMutants {
 	private void setHuman(String[] dnaMutants, int kindHuman) {
 		String dna = String.join("", dnaMutants).toUpperCase();
 		Human human = new Human(dna,kindHuman);
-		humanService.save(human);
+		humanRepository.save(human);
 	}
 	
 	private boolean validateSizeDnaSequence(String[] dna) throws ApiException {

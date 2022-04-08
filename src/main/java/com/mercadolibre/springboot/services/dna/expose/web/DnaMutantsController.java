@@ -18,6 +18,7 @@ import lombok.AllArgsConstructor;
 import javax.validation.Valid;
 
 import org.springdoc.api.annotations.ParameterObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +28,8 @@ import org.springframework.http.ResponseEntity;
 @AllArgsConstructor
 public class DnaMutantsController {
 	
-	private final DnaMutants dnaMutants;
+	@Autowired
+	private DnaMutants dnaMutants;
 	
 	@Operation(tags= "Dna Mutants v1",
 			summary= "Detect if a human is a mutant based on their DNA sequence.",
@@ -50,8 +52,7 @@ public class DnaMutantsController {
 	produces = MediaType.APPLICATION_JSON_VALUE,
 	consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
-	public ResponseEntity<String>
-	getIfMutant(@Valid @RequestBody @ParameterObject Dna dna) throws ApiException{
+	public ResponseEntity<String> getIfMutant(@Valid @RequestBody @ParameterObject Dna dna) throws ApiException{
 		try {
 			String[] strings = dna.getDna().parallelStream().toArray(String[]::new);
 			return dnaMutants.getIfMutant(strings);

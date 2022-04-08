@@ -31,21 +31,21 @@
 			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 		</dependency>
 
-		<!--<dependency>
+		<!-- <dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
-		</dependency>  -->
-		<dependency>
+		</dependency> -->
+	    <dependency>
     		<groupId>org.postgresql</groupId>
     		<artifactId>postgresql</artifactId>
     		<scope>runtime</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
+		 <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
 		
 		<dependency>
     		<groupId>org.springdoc</groupId>
@@ -60,13 +60,35 @@
         	<groupId>org.projectlombok</groupId>
         	<artifactId>lombok</artifactId>
         	<version>1.18.20</version>
-        <scope>provided</scope>
-    </dependency>
-	<dependency>
-    	<groupId>org.javassist</groupId>
-   		<artifactId>javassist</artifactId>
-    	<version>3.23.1-GA</version>
-	</dependency>
+        	<scope>provided</scope>
+    	</dependency>
+		<dependency>
+    		<groupId>org.javassist</groupId>
+   			<artifactId>javassist</artifactId>
+    		<version>3.23.1-GA</version>
+		</dependency>
+		<dependency>
+	    	<groupId>org.mockito</groupId>
+	    	<artifactId>mockito-core</artifactId>
+	   		<version>4.4.0</version>
+	    	<scope>test</scope>
+		</dependency>
+		<dependency>
+    		<groupId>junit</groupId>
+    		<artifactId>junit</artifactId>
+    		<version>4.13.2</version>
+    	<scope>test</scope>
+		</dependency>
+		<dependency>
+    		<groupId>commons-io</groupId>
+   			 <artifactId>commons-io</artifactId>
+    		<version>2.11.0</version>
+	   </dependency>
+	   <dependency>
+   			<groupId>org.junit.vintage</groupId>
+    		<artifactId>junit-vintage-engine</artifactId>
+    		<scope>test</scope>
+	  </dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
@@ -85,6 +107,42 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+        		<groupId>org.apache.maven.plugins</groupId>
+        		<artifactId>maven-surefire-plugin</artifactId>
+        		<configuration>
+            	<includes>
+               		 <include>**/*Test*.java</include>
+            	</includes>
+        </configuration>
+    		</plugin>
+    		<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.2</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+				<!-- Se excluye los modelos y las constantes -->
+				<configuration>
+					<excludes>
+						<exclude>**/model/**</exclude>
+						<exclude>**/util/**</exclude>
+						<exclude>**/MercadoLibreDnamutantsV1Application.*</exclude>
+					</excludes>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
